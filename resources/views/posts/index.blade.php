@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Blog')
 
 @section('content')
     <main class="container">
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
             <div class="col-md-6 px-0">
-                <h1 class="display-4 fst-italic">Home Page</h1>
+                <h1 class="display-4 fst-italic">Blog Page</h1>
                 <p class="lead my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </div>
@@ -20,7 +20,7 @@
                         <h3 class="mb-0">{{ $post->title }}</h3>
                         <div class="mb-1 text-muted">{{ $post->created_at }}</div>
                         <p class="card-text mb-auto">{!! $post->description !!}</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
+                        <a href="{{ route("posts.show", $post->id) }}" class="stretched-link">Continue reading</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <img src="/storage/posts/{{ $post->image }}">
@@ -28,6 +28,8 @@
                 </div>
             </div>
             @endforeach
+
+            {{ $posts->links() }}
         </div>
 
     </main>
